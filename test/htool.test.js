@@ -34,13 +34,22 @@ test('href', t => {
   t.is(result.toString(), '<a href="http://example.com">Example</a>')
 })
 
-test('hidden', t => {
+test('hidden: true', t => {
   const result = h('div', {
     hidden : true,
     children : 'Test',
   })
 
   t.is(result.toString(), '<div hidden="">Test</div>')
+})
+
+test('hidden: false', t => {
+  const result = h('div', {
+    hidden : false,
+    children : 'Test',
+  })
+
+  t.is(result.toString(), '<div>Test</div>')
 })
 
 test('defaultValue', t => {
@@ -61,13 +70,17 @@ test('escape', t => {
 })
 
 test('innerHTML', t => {
-  const result = h('div', { innerHTML : '<span>content</span>' })
+  const result = h('div', {
+    innerHTML : '<span>content</span>',
+  })
 
   t.is(result.toString(), '<div><span>content</span></div>')
 })
 
 test('innerText', t => {
-  const result = h('div', { innerText : 'foo\nbar' })
+  const result = h('div', {
+    innerText : 'foo\nbar',
+  })
 
   t.is(result.toString(), '<div>foo<br>bar</div>')
 })
