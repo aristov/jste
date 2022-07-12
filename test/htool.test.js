@@ -60,7 +60,7 @@ test('defaultValue', t => {
   t.is(result.toString(), '<input value="qwerty">')
 })
 
-test('escape', t => {
+test('escaping strings', t => {
   const result = h('div', {
     title : '"&',
     children : '<>&',
