@@ -1,0 +1,28 @@
+{
+  "name": "htool",
+  "version": "0.1.1",
+  "description": "Fast template engine",
+  "main": "index.js",
+  "scripts": {
+    "start": "ava --watch",
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aristov/htool.git"
+  },
+  "keywords": [
+    "HTML",
+    "template",
+    "engine"
+  ],
+  "author": "Vyacheslav Aristov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aristov/htool/issues"
+  },
+  "homepage": "https://github.com/aristov/htool#readme",
+  "devDependencies": {
+    "ava": "^4.3.1"
+  }
+}
