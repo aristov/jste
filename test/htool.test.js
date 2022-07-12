@@ -59,3 +59,15 @@ test('escape', t => {
 
   t.is(result.toString(), '<div title="&quot;&amp;">&lt;&gt;&amp;</div>')
 })
+
+test('innerHTML', t => {
+  const result = h('div', { innerHTML : '<span>content</span>' })
+
+  t.is(result.toString(), '<div><span>content</span></div>')
+})
+
+test('innerText', t => {
+  const result = h('div', { innerText : 'foo\nbar' })
+
+  t.is(result.toString(), '<div>foo<br>bar</div>')
+})
