@@ -2,51 +2,60 @@ const test = require('ava')
 const h = require('..')
 
 test('htool', t => {
-  const html = h('div')
+  const result = h('div')
 
-  t.is(html, '<div></div>')
+  t.is(result.toString(), '<div></div>')
 })
 
 test('no end tag', t => {
-  const html = h('link')
+  const result = h('link')
 
-  t.is(html, '<link>')
+  t.is(result.toString(), '<link>')
 })
 
 test('props', t => {
-  const html = h('div', { id : '123' })
+  const result = h('div', { id : '123' })
 
-  t.is(html, '<div id="123"></div>')
+  t.is(result.toString(), '<div id="123"></div>')
 })
 
 test('children', t => {
-  const html = h('div', h('span', 'test'))
+  const result = h('div', h('span', 'test'))
 
-  t.is(html, '<div><span>test</span></div>')
+  t.is(result.toString(), '<div><span>test</span></div>')
 })
 
 test('href', t => {
-  const html = h('a', {
+  const result = h('a', {
     href : 'http://example.com',
     children : 'Example',
   })
 
-  t.is(html, '<a href="http://example.com">Example</a>')
+  t.is(result.toString(), '<a href="http://example.com">Example</a>')
 })
 
 test('hidden', t => {
-  const html = h('div', {
+  const result = h('div', {
     hidden : true,
-    children : 'Test'
+    children : 'Test',
   })
 
-  t.is(html, '<div hidden="">Test</div>')
+  t.is(result.toString(), '<div hidden="">Test</div>')
 })
 
 test('defaultValue', t => {
-  const html = h('input', {
-    defaultValue : 'qwerty'
+  const result = h('input', {
+    defaultValue : 'qwerty',
   })
 
-  t.is(html, '<input value="qwerty">')
+  t.is(result.toString(), '<input value="qwerty">')
+})
+
+test('escape', t => {
+  const result = h('div', {
+    title : '"&',
+    children : '<>&',
+  })
+
+  t.is(result.toString(), '<div title="&quot;&amp;">&lt;&gt;&amp;</div>')
 })

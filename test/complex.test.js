@@ -14,7 +14,7 @@ test('htool', t => {
       children : 'Hello DomB!',
     }),
   })
-  t.is(result, '<div id="foo" tabindex="0"><span class="bar">Hello DomB!</span></div>')
+  t.is(result.toString(), '<div id="foo" tabindex="0"><span class="bar">Hello DomB!</span></div>')
 })
 
 test('form', t => {
@@ -29,7 +29,7 @@ test('form', t => {
       button('Find'),
     ],
   })
-  t.is(result, '<form action="https://google.com/search" target="_blank"><label>Search <input type="search" name="q"></label><button>Find</button></form>')
+  t.is(result.toString(), '<form action="https://google.com/search" target="_blank"><label>Search <input type="search" name="q"></label><button>Find</button></form>')
 })
 
 test('html', t => {
@@ -50,7 +50,7 @@ test('html', t => {
       ]),
     ],
   })
-  t.is(result, '<html lang="en"><head><meta charset="UTF-8"><title>DomB example</title><base href="https://example.com/"><link rel="stylesheet" href="index.css"><style>body{color:#AAA;}</style></head><body><script src="index.js"></script></body></html>')
+  t.is(result.toString(), '<html lang="en"><head><meta charset="UTF-8"><title>DomB example</title><base href="https://example.com/"><link rel="stylesheet" href="index.css"><style>body{color:#AAA;}</style></head><body><script src="index.js"></script></body></html>')
 })
 
 test('table', t => {
@@ -63,5 +63,5 @@ test('table', t => {
       tr([td('Netherlands'), td('Amsterdam')]),
     ]),
   ])
-  t.is(result, '<table><caption>Capitals</caption><thead><tr><th>Country</th><th>Capital</th></tr></thead><tbody><tr><td>USA</td><td>Washington</td></tr><tr><td>UK</td><td>London</td></tr><tr><td>Netherlands</td><td>Amsterdam</td></tr></tbody></table>')
+  t.is(result.toString(), '<table><caption>Capitals</caption><thead><tr><th>Country</th><th>Capital</th></tr></thead><tbody><tr><td>USA</td><td>Washington</td></tr><tr><td>UK</td><td>London</td></tr><tr><td>Netherlands</td><td>Amsterdam</td></tr></tbody></table>')
 })
