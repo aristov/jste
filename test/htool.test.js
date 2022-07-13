@@ -19,10 +19,16 @@ test('props', t => {
   t.is(result.toString(), '<div id="123"></div>')
 })
 
-test('children', t => {
+test('children 1', t => {
   const result = h('div', h('span', 'test'))
 
   t.is(result.toString(), '<div><span>test</span></div>')
+})
+
+test('children 2', t => {
+  const result = h('div', null)
+
+  t.is(result.toString(), '<div></div>')
 })
 
 test('href', t => {
@@ -69,7 +75,7 @@ test('escaping strings', t => {
   t.is(result.toString(), '<div title="&quot;&amp;">&lt;&gt;&amp;</div>')
 })
 
-test('innerHTML', t => {
+test('innerHTML 1', t => {
   const result = h('div', {
     innerHTML : '<span>content</span>',
   })
@@ -77,10 +83,34 @@ test('innerHTML', t => {
   t.is(result.toString(), '<div><span>content</span></div>')
 })
 
-test('innerText', t => {
+test('innerHTML 2', t => {
+  const result = h('div', {
+    innerHTML : null,
+  })
+
+  t.is(result.toString(), '<div></div>')
+})
+
+test('innerText 1', t => {
   const result = h('div', {
     innerText : 'foo\nbar',
   })
 
   t.is(result.toString(), '<div>foo<br>bar</div>')
+})
+
+test('innerText 2', t => {
+  const result = h('div', {
+    innerText : 'foo<br>bar',
+  })
+
+  t.is(result.toString(), '<div>foo&lt;br&gt;bar</div>')
+})
+
+test('innerText 3', t => {
+  const result = h('div', {
+    innerText : null,
+  })
+
+  t.is(result.toString(), '<div></div>')
 })
