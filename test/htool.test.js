@@ -68,11 +68,11 @@ test('defaultValue', t => {
 
 test('escaping strings', t => {
   const result = h('div', {
-    title : '"&',
-    children : '<>&',
+    title : '"&"',
+    children : '<&>',
   })
 
-  t.is(result.toString(), '<div title="&quot;&amp;">&lt;&gt;&amp;</div>')
+  t.is(result.toString(), '<div title="&quot;&amp;&quot;">&lt;&amp;&gt;</div>')
 })
 
 test('innerHTML 1', t => {

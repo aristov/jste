@@ -1,5 +1,10 @@
 # htool
 
+[![NPM Version](https://img.shields.io/npm/v/htool.svg)](https://www.npmjs.com/package/htool)
+[![Node.js CI](https://github.com/aristov/htool/actions/workflows/node.js.yml/badge.svg)](https://github.com/aristov/htool/actions/workflows/node.js.yml)
+[![Coverage Status](https://coveralls.io/repos/github/aristov/htool/badge.svg?branch=master)](https://coveralls.io/github/aristov/htool?branch=master)
+[![NPM](https://img.shields.io/npm/l/htool)](https://raw.githubusercontent.com/aristov/htool/master/LICENSE)
+
 HTool is an HTML builder.
 
 This is a simple cross-platform HTML generation library.
@@ -10,7 +15,7 @@ It is a handy tool for creating templates.
 - Convenient JS-compatible syntax
 - Cross-platform, works both in NodeJS and in the browser
 - Support for ES2015 named imports
-- Small footprint, 1KB after gzip
+- Small footprint, 2KB after gzip
 
 ## Installation
 
