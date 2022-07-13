@@ -33,6 +33,19 @@ test('form', t => {
   t.is(result.toString(), '<form action="https://google.com/search" target="_blank"><label>Search <input type="search" name="q"></label><button>Find</button></form>')
 })
 
+test('table', t => {
+  const result = table([
+    caption('Capitals'),
+    thead(tr([th('Country'), th('Capital')])),
+    tbody([
+      tr([td('USA'), td('Washington')]),
+      tr([td('UK'), td('London')]),
+      tr([td('Netherlands'), td('Amsterdam')]),
+    ]),
+  ])
+  t.is(result.toString(), '<table><caption>Capitals</caption><thead><tr><th>Country</th><th>Capital</th></tr></thead><tbody><tr><td>USA</td><td>Washington</td></tr><tr><td>UK</td><td>London</td></tr><tr><td>Netherlands</td><td>Amsterdam</td></tr></tbody></table>')
+})
+
 test('html', t => {
   const result = html({
     lang : 'en',
@@ -52,17 +65,26 @@ test('html', t => {
   t.is(result.toString(), '<html lang="en"><head><meta charset="UTF-8"><title>DomB example</title><base href="https://example.com/"><link rel="stylesheet" href="index.css"><style>body{color:#AAA;}</style></head><body><script src="index.js"></script></body></html>')
 })
 
-test('table', t => {
-  const result = table([
-    caption('Capitals'),
-    thead(tr([th('Country'), th('Capital')])),
-    tbody([
-      tr([td('USA'), td('Washington')]),
-      tr([td('UK'), td('London')]),
-      tr([td('Netherlands'), td('Amsterdam')]),
-    ]),
+test('html + doctype', t => {
+  const result = html({
+    doctype : true,
+    lang : 'ru',
+    children : [
+      head(title('Example')),
+      body('Hello world!'),
+    ],
+  })
+
+  t.is(result.toString(), '<!doctype html><html lang="ru"><head><title>Example</title></head><body>Hello world!</body></html>')
+})
+
+test('html - doctype', t => {
+  const result = html([
+    head(title('Example')),
+    body('Hello world!'),
   ])
-  t.is(result.toString(), '<table><caption>Capitals</caption><thead><tr><th>Country</th><th>Capital</th></tr></thead><tbody><tr><td>USA</td><td>Washington</td></tr><tr><td>UK</td><td>London</td></tr><tr><td>Netherlands</td><td>Amsterdam</td></tr></tbody></table>')
+
+  t.is(result.toString(), '<html><head><title>Example</title></head><body>Hello world!</body></html>')
 })
 
 test('div', t => {
