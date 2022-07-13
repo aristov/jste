@@ -4,6 +4,7 @@
   "description": "Fast template engine",
   "main": "index.js",
   "scripts": {
+    "coverage": "nyc --reporter=lcov npm test",
     "start": "ava --watch",
     "test": "ava"
   },
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/aristov/htool#readme",
   "devDependencies": {
-    "ava": "^4.3.1"
+    "ava": "^4.3.1",
+    "nyc": "^15.1.0"
   }
 }
