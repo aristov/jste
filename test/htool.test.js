@@ -40,7 +40,7 @@ test('hidden: true', t => {
     children : 'Test',
   })
 
-  t.is(result.toString(), '<div hidden="">Test</div>')
+  t.is(result.toString(), '<div hidden>Test</div>')
 })
 
 test('hidden: false', t => {
