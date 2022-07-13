@@ -4,6 +4,7 @@ const h = require('..')
 const { form, label, input, button } = h
 const { html, head, body, base, meta, title, link, style, script } = h
 const { table, caption, thead, tbody, tr, th, td } = h
+const { div, span, hr } = h
 
 test('htool', t => {
   const result = h('div', {
@@ -40,10 +41,8 @@ test('html', t => {
         meta({ charset : 'UTF-8' }),
         title('DomB example'),
         base({ href : 'https://example.com/' }),
-        [
-          link({ rel : 'stylesheet', href : 'index.css' }),
-          style('body{color:#AAA;}'),
-        ],
+        link({ rel : 'stylesheet', href : 'index.css' }),
+        style('body{color:#AAA;}'),
       ]),
       body([
         script({ src : 'index.js' }),
@@ -64,4 +63,34 @@ test('table', t => {
     ]),
   ])
   t.is(result.toString(), '<table><caption>Capitals</caption><thead><tr><th>Country</th><th>Capital</th></tr></thead><tbody><tr><td>USA</td><td>Washington</td></tr><tr><td>UK</td><td>London</td></tr><tr><td>Netherlands</td><td>Amsterdam</td></tr></tbody></table>')
+})
+
+test('div', t => {
+  const result = div([
+    'foo',
+    [
+      undefined,
+      [
+        null,
+        [
+          0,
+          [
+            0n,
+            span([
+              'bar',
+              [[[hr()]]],
+              'bat',
+            ]),
+            NaN,
+          ],
+          -0,
+        ],
+        false,
+      ],
+      '',
+    ],
+    'baz',
+  ])
+
+  t.is(result.toString(), '<div>foo<span>bar<hr>bat</span>baz</div>')
 })
