@@ -1,6 +1,6 @@
 {
   "name": "jste",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Fast template engine",
   "main": "index.js",
   "files": [
