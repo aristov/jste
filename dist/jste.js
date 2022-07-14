@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["htool"] = factory();
+		exports["jste"] = factory();
 	else
-		root["htool"] = factory();
+		root["jste"] = factory();
 })(this, () => {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ([
@@ -14,7 +14,7 @@ return /******/ (() => { // webpackBootstrap
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 /**
- * @module htool
+ * @module jste
  * @author Vyacheslav Aristov <vv.aristov@gmail.com>
  */
 module.exports = __webpack_require__(1)
@@ -24,145 +24,146 @@ module.exports = __webpack_require__(1)
 /* 1 */
 /***/ ((module, exports, __webpack_require__) => {
 
-const htool = __webpack_require__(2)
+const jste = __webpack_require__(2)
 
-exports = module.exports = htool
+exports = module.exports = jste
 
-exports.a = props => htool('a', props)
-exports.abbr = props => htool('abbr', props)
-exports.address = props => htool('address', props)
-exports.area = props => htool('area', props)
-exports.article = props => htool('article', props)
-exports.aside = props => htool('aside', props)
-exports.audio = props => htool('audio', props)
-exports.b = props => htool('b', props)
-exports.base = props => htool('base', props)
-exports.bdi = props => htool('bdi', props)
-exports.bdo = props => htool('bdo', props)
-exports.blockquote = props => htool('blockquote', props)
-exports.body = props => htool('body', props)
-exports.br = props => htool('br', props)
-exports.button = props => htool('button', props)
-exports.canvas = props => htool('canvas', props)
-exports.caption = props => htool('caption', props)
-exports.cite = props => htool('cite', props)
-exports.code = props => htool('code', props)
-exports.col = props => htool('col', props)
-exports.colgroup = props => htool('colgroup', props)
-exports.data = props => htool('data', props)
-exports.datalist = props => htool('datalist', props)
-exports.dd = props => htool('dd', props)
-exports.del = props => htool('del', props)
-exports.details = props => htool('details', props)
-exports.dfn = props => htool('dfn', props)
-exports.dialog = props => htool('dialog', props)
-exports.div = props => htool('div', props)
-exports.dl = props => htool('dl', props)
-exports.dt = props => htool('dt', props)
-exports.em = props => htool('em', props)
-exports.embed = props => htool('embed', props)
-exports.fieldset = props => htool('fieldset', props)
-exports.figcaption = props => htool('figcaption', props)
-exports.figure = props => htool('figure', props)
-exports.footer = props => htool('footer', props)
-exports.form = props => htool('form', props)
-exports.h1 = props => htool('h1', props)
-exports.h2 = props => htool('h2', props)
-exports.h3 = props => htool('h3', props)
-exports.h4 = props => htool('h4', props)
-exports.h5 = props => htool('h5', props)
-exports.h6 = props => htool('h6', props)
-exports.head = props => htool('head', props)
-exports.header = props => htool('header', props)
-exports.hgroup = props => htool('hgroup', props)
-exports.hr = props => htool('hr', props)
+exports.a = props => jste('a', props)
+exports.abbr = props => jste('abbr', props)
+exports.address = props => jste('address', props)
+exports.area = props => jste('area', props)
+exports.article = props => jste('article', props)
+exports.aside = props => jste('aside', props)
+exports.audio = props => jste('audio', props)
+exports.b = props => jste('b', props)
+exports.base = props => jste('base', props)
+exports.bdi = props => jste('bdi', props)
+exports.bdo = props => jste('bdo', props)
+exports.blockquote = props => jste('blockquote', props)
+exports.body = props => jste('body', props)
+exports.br = props => jste('br', props)
+exports.button = props => jste('button', props)
+exports.canvas = props => jste('canvas', props)
+exports.caption = props => jste('caption', props)
+exports.cite = props => jste('cite', props)
+exports.code = props => jste('code', props)
+exports.col = props => jste('col', props)
+exports.colgroup = props => jste('colgroup', props)
+exports.data = props => jste('data', props)
+exports.datalist = props => jste('datalist', props)
+exports.dd = props => jste('dd', props)
+exports.del = props => jste('del', props)
+exports.details = props => jste('details', props)
+exports.dfn = props => jste('dfn', props)
+exports.dialog = props => jste('dialog', props)
+exports.div = props => jste('div', props)
+exports.dl = props => jste('dl', props)
+exports.dt = props => jste('dt', props)
+exports.em = props => jste('em', props)
+exports.embed = props => jste('embed', props)
+exports.fieldset = props => jste('fieldset', props)
+exports.figcaption = props => jste('figcaption', props)
+exports.figure = props => jste('figure', props)
+exports.footer = props => jste('footer', props)
+exports.form = props => jste('form', props)
+exports.h1 = props => jste('h1', props)
+exports.h2 = props => jste('h2', props)
+exports.h3 = props => jste('h3', props)
+exports.h4 = props => jste('h4', props)
+exports.h5 = props => jste('h5', props)
+exports.h6 = props => jste('h6', props)
+exports.head = props => jste('head', props)
+exports.header = props => jste('header', props)
+exports.hgroup = props => jste('hgroup', props)
+exports.hr = props => jste('hr', props)
 exports.html = __webpack_require__(8)
-exports.i = props => htool('i', props)
-exports.iframe = props => htool('iframe', props)
-exports.img = props => htool('img', props)
-exports.input = props => htool('input', props)
-exports.ins = props => htool('ins', props)
-exports.kbd = props => htool('kbd', props)
-exports.label = props => htool('label', props)
-exports.legend = props => htool('legend', props)
-exports.li = props => htool('li', props)
-exports.link = props => htool('link', props)
-exports.main = props => htool('main', props)
-exports.map = props => htool('map', props)
-exports.mark = props => htool('mark', props)
-exports.menu = props => htool('menu', props)
-exports.meta = props => htool('meta', props)
-exports.meter = props => htool('meter', props)
-exports.nav = props => htool('nav', props)
-exports.noscript = props => htool('noscript', props)
-exports.object = props => htool('object', props)
-exports.ol = props => htool('ol', props)
-exports.optgroup = props => htool('optgroup', props)
-exports.option = props => htool('option', props)
-exports.output = props => htool('output', props)
-exports.p = props => htool('p', props)
-exports.picture = props => htool('picture', props)
-exports.pre = props => htool('pre', props)
-exports.progress = props => htool('progress', props)
-exports.q = props => htool('q', props)
-exports.rp = props => htool('rp', props)
-exports.rt = props => htool('rt', props)
-exports.ruby = props => htool('ruby', props)
-exports.s = props => htool('s', props)
-exports.samp = props => htool('samp', props)
-exports.script = props => htool('script', props)
-exports.section = props => htool('section', props)
-exports.select = props => htool('select', props)
-exports.slot = props => htool('slot', props)
-exports.small = props => htool('small', props)
-exports.source = props => htool('source', props)
-exports.span = props => htool('span', props)
-exports.strong = props => htool('strong', props)
-exports.style = props => htool('style', props)
-exports.sub = props => htool('sub', props)
-exports.summary = props => htool('summary', props)
-exports.sup = props => htool('sup', props)
-exports.table = props => htool('table', props)
-exports.tbody = props => htool('tbody', props)
-exports.td = props => htool('td', props)
-exports.template = props => htool('template', props)
-exports.textarea = props => htool('textarea', props)
-exports.tfoot = props => htool('tfoot', props)
-exports.th = props => htool('th', props)
-exports.thead = props => htool('thead', props)
-exports.time = props => htool('time', props)
-exports.title = props => htool('title', props)
-exports.tr = props => htool('tr', props)
-exports.track = props => htool('track', props)
-exports.u = props => htool('u', props)
-exports.ul = props => htool('ul', props)
-exports["var"] = props => htool('var', props)
-exports.video = props => htool('video', props)
-exports.wbr = props => htool('wbr', props)
+exports.i = props => jste('i', props)
+exports.iframe = props => jste('iframe', props)
+exports.img = props => jste('img', props)
+exports.input = props => jste('input', props)
+exports.ins = props => jste('ins', props)
+exports.kbd = props => jste('kbd', props)
+exports.label = props => jste('label', props)
+exports.legend = props => jste('legend', props)
+exports.li = props => jste('li', props)
+exports.link = props => jste('link', props)
+exports.main = props => jste('main', props)
+exports.map = props => jste('map', props)
+exports.mark = props => jste('mark', props)
+exports.menu = props => jste('menu', props)
+exports.meta = props => jste('meta', props)
+exports.meter = props => jste('meter', props)
+exports.nav = props => jste('nav', props)
+exports.noscript = props => jste('noscript', props)
+exports.object = props => jste('object', props)
+exports.ol = props => jste('ol', props)
+exports.optgroup = props => jste('optgroup', props)
+exports.option = props => jste('option', props)
+exports.output = props => jste('output', props)
+exports.p = props => jste('p', props)
+exports.picture = props => jste('picture', props)
+exports.pre = props => jste('pre', props)
+exports.progress = props => jste('progress', props)
+exports.q = props => jste('q', props)
+exports.rp = props => jste('rp', props)
+exports.rt = props => jste('rt', props)
+exports.ruby = props => jste('ruby', props)
+exports.s = props => jste('s', props)
+exports.samp = props => jste('samp', props)
+exports.script = props => jste('script', props)
+exports.section = props => jste('section', props)
+exports.select = props => jste('select', props)
+exports.slot = props => jste('slot', props)
+exports.small = props => jste('small', props)
+exports.source = props => jste('source', props)
+exports.span = props => jste('span', props)
+exports.strong = props => jste('strong', props)
+exports.style = props => jste('style', props)
+exports.sub = props => jste('sub', props)
+exports.summary = props => jste('summary', props)
+exports.sup = props => jste('sup', props)
+exports.table = props => jste('table', props)
+exports.tbody = props => jste('tbody', props)
+exports.td = props => jste('td', props)
+exports.template = props => jste('template', props)
+exports.textarea = props => jste('textarea', props)
+exports.tfoot = props => jste('tfoot', props)
+exports.th = props => jste('th', props)
+exports.thead = props => jste('thead', props)
+exports.time = props => jste('time', props)
+exports.title = props => jste('title', props)
+exports.tr = props => jste('tr', props)
+exports.track = props => jste('track', props)
+exports.u = props => jste('u', props)
+exports.ul = props => jste('ul', props)
+exports["var"] = props => jste('var', props)
+exports.video = props => jste('video', props)
+exports.wbr = props => jste('wbr', props)
 
 
 /***/ }),
 /* 2 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const HString = __webpack_require__(3)
+const JsTemplate = __webpack_require__(3)
 const handlers = __webpack_require__(5)
 const attrNameMap = __webpack_require__(7)
 const replace = __webpack_require__(6)
+const children = handlers.children
 
 const ATTR_RE = /["&]/g
 
 /**
  * @param {string} name
  * @param {{}|[]|string|*} [props]
- * @return {HString}
+ * @return {JsTemplate}
  */
-function htool(name, props) {
+function jste(name, props) {
   if(!props) {
-    return new HString(name)
+    return new JsTemplate(name)
   }
   if(props.constructor !== Object) {
-    return new HString(name, null, handlers.children(props))
+    return new JsTemplate(name, null, children(props))
   }
   let attrs = ''
   let prop, value, handler
@@ -183,10 +184,10 @@ function htool(name, props) {
     }
     attrs += `="${ value }"`
   }
-  return new HString(name, attrs, handler?.(props[handler.__propName]))
+  return new JsTemplate(name, attrs, handler?.(props[handler.__propName]))
 }
 
-module.exports = htool
+module.exports = jste
 
 
 /***/ }),
@@ -195,7 +196,7 @@ module.exports = htool
 
 const isVoidElement = __webpack_require__(4)
 
-class HString extends String
+class JsTemplate
 {
   /**
    * @param {string} name
@@ -205,18 +206,23 @@ class HString extends String
   constructor(name, attrs, content) {
     const startTag = attrs ? `<${ name + attrs }>` : `<${ name }>`
     if(isVoidElement[name]) {
-      super(startTag)
+      this.html = startTag
       return
     }
-    if(content) {
-      super(startTag + content + `</${ name }>`)
-      return
-    }
-    super(startTag + `</${ name }>`)
+    this.html = content ?
+      startTag + content + `</${ name }>` :
+      startTag + `</${ name }>`
+  }
+
+  /**
+   * @return {string}
+   */
+  toString() {
+    return this.html
   }
 }
 
-module.exports = HString
+module.exports = JsTemplate
 
 
 /***/ }),
@@ -244,7 +250,6 @@ module.exports = {
 /* 5 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const HString = __webpack_require__(3)
 const replace = __webpack_require__(6)
 
 const TEXT_RE = /[<>&]/g
@@ -267,7 +272,7 @@ const handlers = {
       }
       return content
     }
-    if(typeof children === 'string' && children.constructor !== HString) {
+    if(typeof children === 'string') {
       if(TEXT_RE.test(children)) {
         return children.replace(TEXT_RE, replace)
       }
@@ -363,7 +368,7 @@ module.exports = {
 /* 8 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const htool = __webpack_require__(2)
+const jste = __webpack_require__(2)
 
 /**
  * @param {{}|[]|string|*} [props]
@@ -371,11 +376,14 @@ const htool = __webpack_require__(2)
  */
 module.exports = props => {
   if(props?.constructor !== Object) {
-    return htool('html', props)
+    return jste('html', props)
   }
   const { doctype, ...rest } = props
-  const result = htool('html', rest)
-  return doctype ? '<!doctype html>' + result : result
+  const result = jste('html', rest)
+  if(doctype) {
+    result.html = '<!doctype html>' + result.html
+  }
+  return result
 }
 
 
