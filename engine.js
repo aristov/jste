@@ -6,7 +6,8 @@
 module.exports = (filePath, params, callback) => {
   try {
     const template = require(filePath)
-    callback(null, template(params))
+    const result = template(params)
+    callback(null, result.toString())
     params.cache || delete require.cache[filePath]
   }
   catch(err) {
