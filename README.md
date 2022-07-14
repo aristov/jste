@@ -5,13 +5,14 @@
 [![Coverage Status](https://coveralls.io/repos/github/aristov/jste/badge.svg?branch=master)](https://coveralls.io/github/aristov/jste?branch=master)
 [![NPM](https://img.shields.io/npm/l/jste)](https://raw.githubusercontent.com/aristov/jste/master/LICENSE)
 
-HTool is an HTML builder.
+JSTE — JavaScript template engine.
 
 This is a simple cross-platform HTML generation library.
-It is a handy tool for creating templates.
+It is a handy and fast tool for creating templates.
 
 ## Features
 
+- High performance
 - Convenient JS-compatible syntax
 - Cross-platform, works both in NodeJS and in the browser
 - Support for ES2015 named imports
@@ -48,7 +49,7 @@ Browser
 
 ## Example
 
-HTool can be used both in NodeJS and in the browser:
+JSTE can be used both in NodeJS and in the browser:
 
 ```js
 import { form, label, input, button } from 'jste'
@@ -72,7 +73,7 @@ document.body.innerHTML = result
 app.get('/form', (req, res) => res.send(result))
 ```
 
-The `result` variable is an HTML string with the appropriate markup:
+`result.toString()` returns an HTML string with the appropriate markup:
 
 ```html
 <form action="//google.com/search" target="_blank">
