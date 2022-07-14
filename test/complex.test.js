@@ -6,7 +6,7 @@ const { html, head, body, base, meta, title, link, style, script } = h
 const { table, caption, thead, tbody, tr, th, td } = h
 const { div, span, hr } = h
 
-test('htool', t => {
+test('jste', t => {
   const result = h('div', {
     id : 'foo',
     tabIndex : 0,

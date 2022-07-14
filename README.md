@@ -1,9 +1,9 @@
-# htool
+# jste
 
-[![NPM Version](https://img.shields.io/npm/v/htool.svg)](https://www.npmjs.com/package/htool)
-[![Node.js CI](https://github.com/aristov/htool/actions/workflows/node.js.yml/badge.svg)](https://github.com/aristov/htool/actions/workflows/node.js.yml)
-[![Coverage Status](https://coveralls.io/repos/github/aristov/htool/badge.svg?branch=master)](https://coveralls.io/github/aristov/htool?branch=master)
-[![NPM](https://img.shields.io/npm/l/htool)](https://raw.githubusercontent.com/aristov/htool/master/LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/jste.svg)](https://www.npmjs.com/package/jste)
+[![Node.js CI](https://github.com/aristov/jste/actions/workflows/node.js.yml/badge.svg)](https://github.com/aristov/jste/actions/workflows/node.js.yml)
+[![Coverage Status](https://coveralls.io/repos/github/aristov/jste/badge.svg?branch=master)](https://coveralls.io/github/aristov/jste?branch=master)
+[![NPM](https://img.shields.io/npm/l/jste)](https://raw.githubusercontent.com/aristov/jste/master/LICENSE)
 
 HTool is an HTML builder.
 
@@ -20,7 +20,7 @@ It is a handy tool for creating templates.
 ## Installation
 
 ```shell
-npm install htool
+npm install jste
 ```
 
 ## Usage
@@ -28,21 +28,21 @@ npm install htool
 ES2015
 
 ```js
-import { div } from 'htool'
+import { div } from 'jste'
 ```
 
 CommonJS
 
 ```js
-const { div } = require('htool')
+const { div } = require('jste')
 ```
 
 Browser
 
 ```html
-<script src="https://unpkg.com/htool@latest/dist/htool.js"></script>
+<script src="https://unpkg.com/jste@latest/dist/jste.js"></script>
 <script>
-  const { div } = htool
+  const { div } = jste
 </script>
 ```
 
@@ -51,7 +51,7 @@ Browser
 HTool can be used both in NodeJS and in the browser:
 
 ```js
-import { form, label, input, button } from 'htool'
+import { form, label, input, button } from 'jste'
 
 const result = form({
   action : 'https://google.com/search',
@@ -86,4 +86,4 @@ The `result` variable is an HTML string with the appropriate markup:
 
 ## License
 
-[The MIT License (MIT)](https://raw.githubusercontent.com/aristov/htool/master/LICENSE)
+[The MIT License (MIT)](https://raw.githubusercontent.com/aristov/jste/master/LICENSE)

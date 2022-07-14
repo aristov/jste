@@ -1,5 +1,5 @@
 {
-  "name": "htool",
+  "name": "jste",
   "version": "0.0.1",
   "description": "Fast template engine",
   "main": "index.js",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aristov/htool.git"
+    "url": "git+https://github.com/aristov/jste.git"
   },
   "keywords": [
     "HTML",
@@ -27,9 +27,9 @@
   "author": "Vyacheslav Aristov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aristov/htool/issues"
+    "url": "https://github.com/aristov/jste/issues"
   },
-  "homepage": "https://github.com/aristov/htool#readme",
+  "homepage": "https://github.com/aristov/jste#readme",
   "devDependencies": {
     "ava": "^4.3.1",
     "nyc": "^15.1.0",

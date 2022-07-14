@@ -5,9 +5,9 @@ module.exports = {
   mode : NODE_ENV || 'none',
   entry : './index.js',
   output : {
-    filename : 'htool' + JS_EXT,
+    filename : 'jste' + JS_EXT,
     library : {
-      name : 'htool',
+      name : 'jste',
       type : 'umd',
     },
     globalObject : 'this',

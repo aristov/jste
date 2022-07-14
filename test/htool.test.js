@@ -1,7 +1,7 @@
 const test = require('ava')
 const h = require('..')
 
-test('htool', t => {
+test('jste', t => {
   const result = h('div')
 
   t.is(result.toString(), '<div></div>')
