@@ -5,10 +5,10 @@
 [![Coverage Status](https://coveralls.io/repos/github/aristov/jste/badge.svg?branch=master)](https://coveralls.io/github/aristov/jste?branch=master)
 [![NPM](https://img.shields.io/npm/l/jste)](https://raw.githubusercontent.com/aristov/jste/master/LICENSE)
 
-JSTE — JavaScript template engine.
+JSTE is a JavaScript template engine.
 
-This is a simple cross-platform HTML generation library.
-It is a handy and fast tool for creating templates.
+This is a simple cross-platform HTML generation library. 
+It is a convenient and fast tool for creating templates.
 
 ## Features
 
