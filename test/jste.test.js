@@ -1,38 +1,38 @@
 const test = require('ava')
-const h = require('..')
+const jste = require('..')
 
 test('jste', t => {
-  const result = h('div')
+  const result = jste('div')
 
   t.is(result.toString(), '<div></div>')
 })
 
 test('no end tag', t => {
-  const result = h('link')
+  const result = jste('link')
 
   t.is(result.toString(), '<link>')
 })
 
 test('props', t => {
-  const result = h('div', { id : '123' })
+  const result = jste('div', { id : '123' })
 
   t.is(result.toString(), '<div id="123"></div>')
 })
 
 test('children 1', t => {
-  const result = h('div', h('span', 'test'))
+  const result = jste('div', jste('span', 'test'))
 
   t.is(result.toString(), '<div><span>test</span></div>')
 })
 
 test('children 2', t => {
-  const result = h('div', null)
+  const result = jste('div', null)
 
   t.is(result.toString(), '<div></div>')
 })
 
 test('href', t => {
-  const result = h('a', {
+  const result = jste('a', {
     children : 'Example',
     href : 'http://example.com',
   })
@@ -41,7 +41,7 @@ test('href', t => {
 })
 
 test('hidden: true', t => {
-  const result = h('div', {
+  const result = jste('div', {
     hidden : true,
     children : 'Test',
   })
@@ -50,7 +50,7 @@ test('hidden: true', t => {
 })
 
 test('hidden: false', t => {
-  const result = h('div', {
+  const result = jste('div', {
     hidden : false,
     children : 'Test',
   })
@@ -59,7 +59,7 @@ test('hidden: false', t => {
 })
 
 test('defaultValue', t => {
-  const result = h('input', {
+  const result = jste('input', {
     defaultValue : 'qwerty',
   })
 
@@ -67,7 +67,7 @@ test('defaultValue', t => {
 })
 
 test('escaping strings', t => {
-  const result = h('div', {
+  const result = jste('div', {
     title : '"&"',
     children : '<&>',
   })
@@ -76,7 +76,7 @@ test('escaping strings', t => {
 })
 
 test('innerHTML 1', t => {
-  const result = h('div', {
+  const result = jste('div', {
     innerHTML : '<span>content</span>',
   })
 
@@ -84,7 +84,7 @@ test('innerHTML 1', t => {
 })
 
 test('innerHTML 2', t => {
-  const result = h('div', {
+  const result = jste('div', {
     innerHTML : null,
   })
 
@@ -92,7 +92,7 @@ test('innerHTML 2', t => {
 })
 
 test('innerText 1', t => {
-  const result = h('div', {
+  const result = jste('div', {
     innerText : 'foo\nbar',
   })
 
@@ -100,7 +100,7 @@ test('innerText 1', t => {
 })
 
 test('innerText 2', t => {
-  const result = h('div', {
+  const result = jste('div', {
     innerText : 'foo<br>bar',
   })
 
@@ -108,7 +108,7 @@ test('innerText 2', t => {
 })
 
 test('innerText 3', t => {
-  const result = h('div', {
+  const result = jste('div', {
     innerText : null,
   })
 
