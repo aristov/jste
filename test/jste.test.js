@@ -33,8 +33,8 @@ test('children 2', t => {
 
 test('href', t => {
   const result = h('a', {
-    href : 'http://example.com',
     children : 'Example',
+    href : 'http://example.com',
   })
 
   t.is(result.toString(), '<a href="http://example.com">Example</a>')
