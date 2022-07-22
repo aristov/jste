@@ -19,6 +19,10 @@ return /******/ (() => { // webpackBootstrap
  */
 module.exports = __webpack_require__(1)
 
+if(typeof process !== 'undefined') {
+  module.exports.__express = eval('require("./engine")')
+}
+
 
 /***/ }),
 /* 1 */
@@ -145,7 +149,7 @@ exports.wbr = props => jste('wbr', props)
 /* 2 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const JsTemplate = __webpack_require__(3)
+const Template = __webpack_require__(3)
 const handlers = __webpack_require__(5)
 const attrNameMap = __webpack_require__(7)
 const replace = __webpack_require__(6)
@@ -156,19 +160,20 @@ const ATTR_RE = /["&]/g
 /**
  * @param {string} name
  * @param {{}|[]|string|*} [props]
- * @return {JsTemplate}
+ * @return {Template}
  */
 function jste(name, props) {
   if(!props) {
-    return new JsTemplate(name)
+    return new Template(name)
   }
   if(props.constructor !== Object) {
-    return new JsTemplate(name, null, children(props))
+    return new Template(name, null, children(props))
   }
   let attrs = ''
   let prop, value, handler
   for(prop in props) {
-    if(handler = handlers[prop]) {
+    if(handlers[prop]) {
+      handler = handlers[prop]
       continue
     }
     value = props[prop]
@@ -184,7 +189,7 @@ function jste(name, props) {
     }
     attrs += `="${ value }"`
   }
-  return new JsTemplate(name, attrs, handler?.(props[handler.__propName]))
+  return new Template(name, attrs, handler?.(props[handler.__propName]))
 }
 
 module.exports = jste
@@ -196,7 +201,7 @@ module.exports = jste
 
 const isVoidElement = __webpack_require__(4)
 
-class JsTemplate
+class Template
 {
   /**
    * @param {string} name
@@ -222,7 +227,7 @@ class JsTemplate
   }
 }
 
-module.exports = JsTemplate
+module.exports = Template
 
 
 /***/ }),
