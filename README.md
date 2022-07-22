@@ -7,7 +7,7 @@
 
 JSTE is a JavaScript template engine.
 
-This is a simple cross-platform HTML generation library. 
+This is a simple cross-platform HTML generation library.
 It is a convenient and fast tool for creating templates.
 
 ## Features
@@ -77,13 +77,17 @@ app.get('/form', (req, res) => res.send(result))
 
 ```html
 <form action="//google.com/search" target="_blank">
-    <label>
-        Search 
-        <input type="search" name="q">
-    </label>
-    <button>Find</button>
+  <label>
+    Search
+    <input type="search" name="q">
+  </label>
+  <button>Find</button>
 </form>
 ```
+
+## Documentation
+
+* [Using with Express](https://github.com/aristov/jste/wiki/Using-with-Express)
 
 ## License
 
