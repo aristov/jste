@@ -7,7 +7,7 @@ test('jste', t => {
   t.is(result.toString(), '<div></div>')
 })
 
-test('no end tag', t => {
+test('void element', t => {
   const result = jste('link')
 
   t.is(result.toString(), '<link>')

@@ -12,10 +12,10 @@ test('jste', t => {
     tabIndex : 0,
     children : h('span', {
       className : 'bar',
-      children : 'Hello DomB!',
+      children : 'Hello JSTE!',
     }),
   })
-  t.is(result.toString(), '<div id="foo" tabindex="0"><span class="bar">Hello DomB!</span></div>')
+  t.is(result.toString(), '<div id="foo" tabindex="0"><span class="bar">Hello JSTE!</span></div>')
 })
 
 test('form', t => {
@@ -52,7 +52,7 @@ test('html', t => {
     children : [
       head([
         meta({ charset : 'UTF-8' }),
-        title('DomB example'),
+        title('JSTE example'),
         base({ href : 'https://example.com/' }),
         link({ rel : 'stylesheet', href : 'index.css' }),
         style('body{color:#AAA;}'),
@@ -62,7 +62,7 @@ test('html', t => {
       ]),
     ],
   })
-  t.is(result.toString(), '<html lang="en"><head><meta charset="UTF-8"><title>DomB example</title><base href="https://example.com/"><link rel="stylesheet" href="index.css"><style>body{color:#AAA;}</style></head><body><script src="index.js"></script></body></html>')
+  t.is(result.toString(), '<html lang="en"><head><meta charset="UTF-8"><title>JSTE example</title><base href="https://example.com/"><link rel="stylesheet" href="index.css"><style>body{color:#AAA;}</style></head><body><script src="index.js"></script></body></html>')
 })
 
 test('html + doctype', t => {
