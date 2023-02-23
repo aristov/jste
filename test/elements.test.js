@@ -1,7 +1,7 @@
 const test = require('ava')
 const jste = require('..')
 
-test('test #1', t => {
+test('all', t => {
   t.is(jste.a().toString(), '<a></a>')
   t.is(jste.abbr().toString(), '<abbr></abbr>')
   t.is(jste.address().toString(), '<address></address>')
