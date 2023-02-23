@@ -62,3 +62,14 @@ test('array empty', t => {
   })
   t.is(result.toString(), '<div></div>')
 })
+
+test('xss', t => {
+  const result = div({
+    innerText : {
+      toString() {
+        return `<script>alert('Hacked!')</script>`
+      }
+    }
+  })
+  t.is(result.toString(), `<div>&lt;script&gt;alert('Hacked!')&lt;/script&gt;</div>`)
+})

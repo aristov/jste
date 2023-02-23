@@ -63,3 +63,14 @@ test('array', t => {
 
   t.is(result.toString(), '<body>0<div>Infinity<span>NaN</span>-Infinity</div>0</body>')
 })
+
+test('xss', t => {
+  const result = div({
+    children : {
+      toString() {
+        return `<script>alert('Hacked!')</script>`
+      }
+    }
+  })
+  t.is(result.toString(), `<div>&lt;script&gt;alert('Hacked!')&lt;/script&gt;</div>`)
+})

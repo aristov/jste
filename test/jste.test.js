@@ -75,3 +75,11 @@ test('complex', t => {
 
   t.is(result.toString(), '<div id="foo" tabindex="0"><span class="bar">Hello JSTE!</span></div>')
 })
+
+test('xss', t => {
+  const result = jste('div', {
+    id : `"><script>alert('Hacked!')</script>`
+  })
+
+  t.is(result.toString(), `<div id="&quot;><script>alert('Hacked!')</script>"></div>`)
+})
