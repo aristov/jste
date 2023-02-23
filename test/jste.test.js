@@ -78,7 +78,11 @@ test('complex', t => {
 
 test('xss', t => {
   const result = jste('div', {
-    id : `"><script>alert('Hacked!')</script>`
+    id : {
+      toString() {
+        return `"><script>alert('Hacked!')</script>`
+      }
+    }
   })
 
   t.is(result.toString(), `<div id="&quot;><script>alert('Hacked!')</script>"></div>`)
