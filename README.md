@@ -14,9 +14,11 @@ It is a convenient and fast tool for creating templates.
 
 - High performance
 - Convenient JS-compatible syntax
+- Secure, escaping strings by default
 - Cross-platform, works both in NodeJS and in the browser
 - Support for ES2015 named imports
-- Small footprint, 2KB after gzip
+- Small footprint, 4KB after gzip
+- Compatible with Express
 
 ## Installation
 
@@ -26,7 +28,7 @@ npm install jste
 
 ## Usage
 
-ES2015
+ESM
 
 ```js
 import { div } from 'jste'
@@ -49,45 +51,63 @@ Browser
 
 ## Example
 
-JSTE can be used both in NodeJS and in the browser:
+JSTE can be used both in NodeJS and in the browser.
+Consider an example template that generating simple markup for a single page application:
 
 ```js
-import { form, label, input, button } from 'jste'
+import { html, head, body, meta, title, link, script } from 'jste'
 
-const result = form({
-  action : 'https://google.com/search',
-  target : '_blank',
+const example = params => html({
+  doctype : true,
+  lang : params.lang,
   children : [
-    label([
-      'Search ',
-      input({ type : 'search', name : 'q' }),
+    head([
+      meta({ charset : 'utf-8' }),
+      title(params.title),
+      link({
+        rel : 'stylesheet',
+        href : '/bundle.css',
+      })
     ]),
-    button('Find'),
+    body(
+      script({ src : '/bundle.js' }),
+    ),
   ],
 })
 
+const result = example({
+  lang : 'en',
+  title : 'Hello JSTE!',
+})
+
 // browser
-document.body.innerHTML = result
+document.body.innerHTML = result.toString()
 
 // nodejs
-app.get('/form', (req, res) => res.send(result))
+app.get('/form', (req, res) => {
+  res.send(result.toString())
+})
 ```
 
-`result.toString()` returns an HTML string with the appropriate markup:
+In this example, `result.toString()` returns an HTML string with the appropriate markup (line breaks added for readability):
 
 ```html
-<form action="//google.com/search" target="_blank">
-  <label>
-    Search
-    <input type="search" name="q">
-  </label>
-  <button>Find</button>
-</form>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello JSTE!</title>
+    <link rel="stylesheet" href="/bundle.css">
+  </head>
+  <body>
+    <script src="/bundle.js"></script>
+  </body>
+</html>
 ```
 
 ## Documentation
 
-* [Using with Express](https://github.com/aristov/jste/wiki/Using-with-Express)
+* [Use with Express](https://github.com/aristov/jste/wiki/Using-with-Express)
 
 ## License
 
