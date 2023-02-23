@@ -19,13 +19,13 @@ test('props', t => {
   t.is(result.toString(), '<div id="123"></div>')
 })
 
-test('children 1', t => {
+test('children: element', t => {
   const result = jste('div', jste('span', 'test'))
 
   t.is(result.toString(), '<div><span>test</span></div>')
 })
 
-test('children 2', t => {
+test('children: null', t => {
   const result = jste('div', null)
 
   t.is(result.toString(), '<div></div>')
@@ -75,7 +75,7 @@ test('escaping strings', t => {
   t.is(result.toString(), '<div title="&quot;&amp;&quot;">&lt;&amp;&gt;</div>')
 })
 
-test('innerHTML 1', t => {
+test('innerHTML: html', t => {
   const result = jste('div', {
     innerHTML : '<span>content</span>',
   })
@@ -83,7 +83,7 @@ test('innerHTML 1', t => {
   t.is(result.toString(), '<div><span>content</span></div>')
 })
 
-test('innerHTML 2', t => {
+test('innerHTML: null', t => {
   const result = jste('div', {
     innerHTML : null,
   })
@@ -91,7 +91,19 @@ test('innerHTML 2', t => {
   t.is(result.toString(), '<div></div>')
 })
 
-test('innerText 1', t => {
+test('innerHTML: array', t => {
+  const result = jste('ul', {
+    innerHTML : [
+      '<li>one</li>',
+      '<li>two</li>',
+      '<li>three</li>',
+    ],
+  })
+
+  t.is(result.toString(), '<ul><li>one</li><li>two</li><li>three</li></ul>')
+})
+
+test('innerText: string', t => {
   const result = jste('div', {
     innerText : 'foo\nbar',
   })
@@ -99,7 +111,7 @@ test('innerText 1', t => {
   t.is(result.toString(), '<div>foo<br>bar</div>')
 })
 
-test('innerText 2', t => {
+test('innerText: html', t => {
   const result = jste('div', {
     innerText : 'foo<br>bar',
   })
@@ -107,7 +119,7 @@ test('innerText 2', t => {
   t.is(result.toString(), '<div>foo&lt;br&gt;bar</div>')
 })
 
-test('innerText 3', t => {
+test('innerText: null', t => {
   const result = jste('div', {
     innerText : null,
   })
