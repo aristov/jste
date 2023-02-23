@@ -94,9 +94,13 @@ test('innerHTML: null', t => {
 test('innerHTML: array', t => {
   const result = jste('ul', {
     innerHTML : [
+      false,
       '<li>one</li>',
+      null,
       '<li>two</li>',
+      undefined,
       '<li>three</li>',
+      NaN
     ],
   })
 
@@ -117,6 +121,14 @@ test('innerText: html', t => {
   })
 
   t.is(result.toString(), '<div>foo&lt;br&gt;bar</div>')
+})
+
+test('innerText: array', t => {
+  const result = jste('div', {
+    innerText : [false, 'foo', null, 'bar', undefined, 'baz', NaN],
+  })
+
+  t.is(result.toString(), '<div>foo<br>bar<br>baz</div>')
 })
 
 test('innerText: null', t => {
