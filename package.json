@@ -31,7 +31,11 @@
   },
   "homepage": "https://github.com/aristov/jste#readme",
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/plugin-transform-runtime": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
     "ava": "^4.3.1",
+    "babel-loader": "^9.1.2",
     "nyc": "^15.1.0",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0"

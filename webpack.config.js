@@ -1,15 +1,37 @@
-const { NODE_ENV } = process.env
-const JS_EXT = NODE_ENV === 'production' ? '.min.js' : '.js'
-
-module.exports = {
-  mode : NODE_ENV || 'none',
+const config = {
+  mode : 'none',
   entry : './index.js',
   output : {
-    filename : 'jste' + JS_EXT,
+    filename : 'jste.js',
     library : {
       name : 'jste',
       type : 'umd',
     },
     globalObject : 'this',
   },
+  module : {
+    rules : [
+      {
+        test : /\.js$/,
+        use : {
+          loader : 'babel-loader',
+          options : {
+            plugins : [
+              '@babel/plugin-transform-runtime',
+            ],
+            presets : [
+              '@babel/preset-env',
+            ],
+          },
+        },
+      },
+    ],
+  }
 }
+
+if(process.env.NODE_ENV === 'production') {
+  config.mode = 'production'
+  config.output.filename = 'jste.min.js'
+}
+
+module.exports = config
