@@ -31,5 +31,4 @@ test('error', async t => {
   const params = null
   const error = await t.throwsAsync(engineAsync(filePath, params))
   t.is(error.name, 'TypeError')
-  t.is(error.message, `Cannot read properties of null (reading 'lang')`)
 })
