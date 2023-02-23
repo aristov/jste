@@ -1,30 +1,30 @@
 const test = require('ava')
-const { html, head, body, base, meta, title, link, style, script } = require('..')
+const { html, head, body, meta, title, link, script } = require('..')
 
-test('doctype', t => {
+test('simple', t => {
   const result = html({
-    doctype : true,
     lang : 'en',
   })
-
-  t.is(result.toString(), '<!doctype html><html lang="en"></html>')
+  t.is(result.toString(), '<html lang="en"></html>')
 })
 
 test('complex', t => {
   const result = html({
+    doctype : true,
     lang : 'en',
     children : [
       head([
-        meta({ charset : 'UTF-8' }),
-        title('JSTE example'),
-        base({ href : 'https://example.com/' }),
-        link({ rel : 'stylesheet', href : 'index.css' }),
-        style('body{color:#AAA;}'),
+        meta({ charset : 'utf-8' }),
+        title('Hello JSTE!'),
+        link({
+          rel : 'stylesheet',
+          href : '/bundle.css',
+        })
       ]),
-      body([
-        script({ src : 'index.js' }),
-      ]),
+      body(
+        script({ src : '/bundle.js' }),
+      ),
     ],
   })
-  t.is(result.toString(), '<html lang="en"><head><meta charset="UTF-8"><title>JSTE example</title><base href="https://example.com/"><link rel="stylesheet" href="index.css"><style>body{color:#AAA;}</style></head><body><script src="index.js"></script></body></html>')
+  t.is(result.toString(), '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Hello JSTE!</title><link rel="stylesheet" href="/bundle.css"></head><body><script src="/bundle.js"></script></body></html>')
 })
