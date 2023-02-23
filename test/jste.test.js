@@ -68,11 +68,11 @@ test('defaultValue', t => {
 
 test('escaping strings', t => {
   const result = jste('div', {
-    title : '"&"',
-    children : '<&>',
+    title : '<"&">',
+    children : '<"&">',
   })
 
-  t.is(result.toString(), '<div title="&quot;&amp;&quot;">&lt;&amp;&gt;</div>')
+  t.is(result.toString(), '<div title="<&quot;&amp;&quot;>">&lt;"&amp;"&gt;</div>')
 })
 
 test('innerHTML: html', t => {
