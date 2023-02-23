@@ -1,0 +1,19 @@
+const { html, head, body, meta, title, script } = require('../index')
+
+module.exports = params => {
+  return html({
+    doctype : true,
+    lang : params.lang,
+    children : [
+      head([
+        meta({ charset : 'utf-8' }),
+        title(params.title),
+      ]),
+      body([
+        script({
+          src : params.src,
+        }),
+      ]),
+    ],
+  })
+}

@@ -4,6 +4,6 @@
  */
 module.exports = require('./lib/jste')
 
-if(typeof process !== 'undefined') {
+if(typeof window === 'undefined') {
   module.exports.__express = eval('require("./engine")')
 }
