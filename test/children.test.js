@@ -1,6 +1,5 @@
 const test = require('ava')
-const jste = require('..')
-const { div, span, hr } = jste
+const { body, div, span } = require('..')
 
 test('element', t => {
   const result = div(span('test'))
@@ -9,37 +8,58 @@ test('element', t => {
 })
 
 test('null', t => {
-  const result = div(null)
+  t.is(div(null).toString(), '<div></div>')
+})
 
-  t.is(result.toString(), '<div></div>')
+test('undefined', t => {
+  t.is(div(undefined).toString(), '<div></div>')
+})
+
+test('boolean', t => {
+  t.is(div(true).toString(), '<div></div>')
+  t.is(div(false).toString(), '<div></div>')
+})
+
+test('number', t => {
+  t.is(div(0).toString(), '<div>0</div>')
+  t.is(div(-0).toString(), '<div>0</div>')
+  t.is(div(0n).toString(), '<div>0</div>')
+  t.is(div(.5).toString(), '<div>0.5</div>')
+  t.is(div(-.5).toString(), '<div>-0.5</div>')
+  t.is(div(NaN).toString(), '<div>NaN</div>')
+  t.is(div(Infinity).toString(), '<div>Infinity</div>')
+  t.is(div(-Infinity).toString(), '<div>-Infinity</div>')
+})
+
+test('string', t => {
+  t.is(div('').toString(), '<div></div>')
+  t.is(div(``).toString(), '<div></div>')
+  t.is(div('test').toString(), '<div>test</div>')
+  t.is(div('<span>test</span>').toString(), '<div>&lt;span&gt;test&lt;/span&gt;</div>')
 })
 
 test('array', t => {
-  const result = div([
-    'foo',
+  const result = body([
+    true,
     [
-      undefined,
+      0,
       [
         null,
         [
-          0,
-          [
-            0n,
-            span([
-              'bar',
-              [[[hr()]]],
-              'bat',
-            ]),
-            NaN,
-          ],
-          -0,
+          div([
+            Infinity,
+            '',
+            [[[span(NaN)]]],
+            ``,
+            -Infinity,
+          ]),
         ],
-        false,
+        undefined,
       ],
-      '',
+      -0,
     ],
-    'baz',
+    false,
   ])
 
-  t.is(result.toString(), '<div>foo<span>bar<hr>bat</span>baz</div>')
+  t.is(result.toString(), '<body>0<div>Infinity<span>NaN</span>-Infinity</div>0</body>')
 })

@@ -1,16 +1,38 @@
 const test = require('ava')
-const jste = require('..')
+const { div } = require('..')
+
+test('null', t => {
+  t.is(div({ innerText : null }).toString(), '<div></div>')
+})
+
+test('undefined', t => {
+  t.is(div({ innerText : undefined }).toString(), '<div></div>')
+})
+
+test('boolean', t => {
+  t.is(div({ innerText : true }).toString(), '<div></div>')
+  t.is(div({ innerText : false }).toString(), '<div></div>')
+})
+
+test('number', t => {
+  t.is(div({ innerText : 0 }).toString(), '<div>0</div>')
+  t.is(div({ innerText : -0 }).toString(), '<div>0</div>')
+  t.is(div({ innerText : 0n }).toString(), '<div>0</div>')
+  t.is(div({ innerText : .5 }).toString(), '<div>0.5</div>')
+  t.is(div({ innerText : -.5 }).toString(), '<div>-0.5</div>')
+  t.is(div({ innerText : NaN }).toString(), '<div>NaN</div>')
+  t.is(div({ innerText : Infinity }).toString(), '<div>Infinity</div>')
+  t.is(div({ innerText : -Infinity }).toString(), '<div>-Infinity</div>')
+})
 
 test('string', t => {
-  const result = jste('div', {
-    innerText : 'foo\nbar',
-  })
-
-  t.is(result.toString(), '<div>foo<br>bar</div>')
+  t.is(div({ innerText : 'foo\nbar' }).toString(), '<div>foo<br>bar</div>')
+  t.is(div({ innerText : '' }).toString(), '<div></div>')
+  t.is(div({ innerText : `` }).toString(), '<div></div>')
 })
 
 test('html', t => {
-  const result = jste('div', {
+  const result = div({
     innerText : 'foo<br>bar',
   })
 
@@ -18,17 +40,25 @@ test('html', t => {
 })
 
 test('array', t => {
-  const result = jste('div', {
-    innerText : [false, 'foo', null, 'bar', undefined, 'baz', NaN],
+  const result = div({
+    innerText : [
+      'foo',
+      'bar',
+      'bat',
+      'baz',
+    ],
   })
-
-  t.is(result.toString(), '<div>foo<br>bar<br>baz</div>')
+  t.is(result.toString(), '<div>foo<br>bar<br>bat<br>baz</div>')
 })
 
-test('null', t => {
-  const result = jste('div', {
-    innerText : null,
+test('array empty', t => {
+  const result = div({
+    innerText : [
+      null,
+      true,
+      false,
+      undefined,
+    ],
   })
-
   t.is(result.toString(), '<div></div>')
 })

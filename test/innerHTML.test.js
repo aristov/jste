@@ -1,34 +1,62 @@
 const test = require('ava')
-const jste = require('..')
+const { body, div, span } = require('..')
+
+test('null', t => {
+  t.is(div({ innerHTML : null }).toString(), '<div></div>')
+})
+
+test('undefined', t => {
+  t.is(div({ innerHTML : undefined }).toString(), '<div></div>')
+})
+
+test('boolean', t => {
+  t.is(div({ innerHTML : true }).toString(), '<div></div>')
+  t.is(div({ innerHTML : false }).toString(), '<div></div>')
+})
+
+test('number', t => {
+  t.is(div({ innerHTML : 0 }).toString(), '<div>0</div>')
+  t.is(div({ innerHTML : -0 }).toString(), '<div>0</div>')
+  t.is(div({ innerHTML : 0n }).toString(), '<div>0</div>')
+  t.is(div({ innerHTML : .5 }).toString(), '<div>0.5</div>')
+  t.is(div({ innerHTML : -.5 }).toString(), '<div>-0.5</div>')
+  t.is(div({ innerHTML : NaN }).toString(), '<div>NaN</div>')
+  t.is(div({ innerHTML : Infinity }).toString(), '<div>Infinity</div>')
+  t.is(div({ innerHTML : -Infinity }).toString(), '<div>-Infinity</div>')
+})
+
+test('string', t => {
+  t.is(div({ innerHTML : 'test' }).toString(), '<div>test</div>')
+  t.is(div({ innerHTML : '' }).toString(), '<div></div>')
+  t.is(div({ innerHTML : `` }).toString(), '<div></div>')
+})
 
 test('html', t => {
-  const result = jste('div', {
+  const result = div({
     innerHTML : '<span>content</span>',
   })
-
   t.is(result.toString(), '<div><span>content</span></div>')
 })
 
-test('null', t => {
-  const result = jste('div', {
-    innerHTML : null,
-  })
-
-  t.is(result.toString(), '<div></div>')
-})
-
 test('array', t => {
-  const result = jste('ul', {
+  const result = body({
     innerHTML : [
-      false,
-      '<li>one</li>',
+      true,
+      0,
       null,
-      '<li>two</li>',
+      '<br>',
+      div([
+        Infinity,
+        '<br>',
+        [[[span(NaN)]]],
+        '<br>',
+        -Infinity,
+      ]),
+      '<br>',
       undefined,
-      '<li>three</li>',
-      NaN
+      -0,
+      false,
     ],
   })
-
-  t.is(result.toString(), '<ul><li>one</li><li>two</li><li>three</li></ul>')
+  t.is(result.toString(), '<body>0<br><div>Infinity&lt;br&gt;<span>NaN</span>&lt;br&gt;-Infinity</div><br>0</body>')
 })
