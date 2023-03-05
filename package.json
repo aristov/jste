@@ -32,6 +32,7 @@
   "homepage": "https://github.com/aristov/jste#readme",
   "devDependencies": {
     "@babel/core": "^7.21.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
     "@babel/plugin-transform-runtime": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "ava": "^5.2.0",

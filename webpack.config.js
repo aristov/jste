@@ -1,3 +1,5 @@
+const { DefinePlugin } = require('webpack')
+
 const config = {
   mode : 'none',
   entry : './index.js',
@@ -17,6 +19,7 @@ const config = {
           loader : 'babel-loader',
           options : {
             plugins : [
+              '@babel/plugin-transform-modules-commonjs',
               '@babel/plugin-transform-runtime',
             ],
             presets : [
@@ -26,7 +29,12 @@ const config = {
         },
       },
     ],
-  }
+  },
+  plugins : [
+    new DefinePlugin({
+      'typeof window' : JSON.stringify('object'),
+    }),
+  ],
 }
 
 if(process.env.NODE_ENV === 'production') {
