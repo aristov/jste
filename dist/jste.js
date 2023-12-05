@@ -30,10 +30,52 @@ if (false) {}
 
 
 var Template = __webpack_require__(2);
+
+/**
+ * Generic template for creating any type of element
+ * @param {string} tagName element tag name (lower case)
+ * @param {{}|Template|*} [props] element properties (attributes and descendants)
+ * @param {*} [props.children] element children
+ * @param {string|string[]} [props.innerHTML] HTML markup of the element
+ * @param {string|string[]} [props.innerText] rendered text content of the element and its descendants
+ * @param {string} [props.id] unique element identifier
+ * @param {string|string[]} [props.className] element class attribute value
+ * @param {string|{}} [props.style] element style attribute value
+ * @param {string} [props.accessKey] element accesskey attribute value
+ * @param {string} [props.autocapitalize] element autocapitalize attribute value
+ * @param {string} [props.autofocus] element autofocus attribute value
+ * @param {string} [props.contentEditable] element contenteditable attribute value
+ * @param {string} [props.dir] element dir attribute value
+ * @param {boolean} [props.draggable] element draggable attribute value
+ * @param {string} [props.enterKeyHint] element enterkeyhint attribute value
+ * @param {boolean} [props.hidden] element hidden attribute value
+ * @param {boolean} [props.inert] element inert attribute value
+ * @param {string} [props.inputMode] element inputmode attribute value
+ * @param {string} [props.lang] element lang attribute value
+ * @param {boolean} [props.spellcheck] element spellcheck attribute value
+ * @param {number} [props.tabIndex] element tabindex attribute value
+ * @param {string} [props.title] element title attribute value
+ * @param {boolean} [props.translate] element translate attribute value
+ * @return {Template}
+ */
 var jste = function jste(tagName, props) {
   return new Template(tagName, props);
 };
 exports = module.exports = jste;
+
+/**
+ * Template for creating an HTML element a
+ * @param {{}|Template|*} props element properties (attributes and descendants)
+ * @param {string} [props.href] address of the hyperlink
+ * @param {string} [props.target] navigable for hyperlink navigation
+ * @param {string} [props.download] whether to download the resource instead of navigating to it, and its filename if so
+ * @param {string} [props.ping] URLs to ping
+ * @param {string} [props.rel] relationship between the location in the document containing the hyperlink and the destination resource
+ * @param {string} [props.hreflang] language of the linked resource
+ * @param {string} [props.type] hint for the type of the referenced resource
+ * @param {string} [props.referrerPolicy] referrer policy for fetches initiated by the element
+ * @return {Template}
+ */
 exports.a = function (props) {
   return new Template('a', props);
 };
@@ -97,6 +139,9 @@ exports.col = function (props) {
 exports.colgroup = function (props) {
   return new Template('colgroup', props);
 };
+exports.comment = function (data) {
+  return "<!--".concat(data, "-->");
+};
 exports.data = function (props) {
   return new Template('data', props);
 };
@@ -148,6 +193,7 @@ exports.footer = function (props) {
 exports.form = function (props) {
   return new Template('form', props);
 };
+exports.fragment = __webpack_require__(10);
 exports.h1 = function (props) {
   return new Template('h1', props);
 };
@@ -178,7 +224,7 @@ exports.hgroup = function (props) {
 exports.hr = function (props) {
   return new Template('hr', props);
 };
-exports.html = __webpack_require__(15);
+exports.html = __webpack_require__(16);
 exports.i = function (props) {
   return new Template('i', props);
 };
@@ -278,7 +324,7 @@ exports.s = function (props) {
 exports.samp = function (props) {
   return new Template('samp', props);
 };
-exports.script = __webpack_require__(23);
+exports.script = __webpack_require__(19);
 exports.section = function (props) {
   return new Template('section', props);
 };
@@ -300,7 +346,7 @@ exports.span = function (props) {
 exports.strong = function (props) {
   return new Template('strong', props);
 };
-exports.style = __webpack_require__(24);
+exports.style = __webpack_require__(20);
 exports.sub = function (props) {
   return new Template('sub', props);
 };
@@ -372,18 +418,15 @@ var _interopRequireDefault = __webpack_require__(3);
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(4));
 var _createClass2 = _interopRequireDefault(__webpack_require__(5));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(9));
-var _classPrivateFieldGet2 = _interopRequireDefault(__webpack_require__(10));
-var _classPrivateFieldSet2 = _interopRequireDefault(__webpack_require__(13));
+var _class;
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _classPrivateMethodInitSpec(obj, privateSet) { _checkPrivateRedeclaration(obj, privateSet); privateSet.add(obj); }
-function _classPrivateFieldInitSpec(obj, privateMap, value) { _checkPrivateRedeclaration(obj, privateMap); privateMap.set(obj, value); }
 function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
 function _classStaticPrivateMethodGet(receiver, classConstructor, method) { _classCheckPrivateStaticAccess(receiver, classConstructor); return method; }
 function _classCheckPrivateStaticAccess(receiver, classConstructor) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } }
 function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(receiver)) { throw new TypeError("attempted to get private field on non-instance"); } return fn; }
-var toString = Object.prototype.toString;
 var filter = function filter(value) {
   return !skipTypes[toString.call(value)];
 };
@@ -454,9 +497,6 @@ var CAMEL_CASE_RE = /([a-z])([A-Z])/g;
 var ESCAPE_TEXT_RE = /[<>&]/g;
 var ESCAPE_ATTR_RE = /["&]/g;
 var LINE_BREAK_RE = /\n/g;
-var _tagName = /*#__PURE__*/new WeakMap();
-var _attrs = /*#__PURE__*/new WeakMap();
-var _content = /*#__PURE__*/new WeakMap();
 var _setAttr = /*#__PURE__*/new WeakSet();
 var Template = /*#__PURE__*/function () {
   /**
@@ -464,6 +504,7 @@ var Template = /*#__PURE__*/function () {
    * @param {{}|[]|string|*} [props]
    */
   function Template(tagName, props) {
+    var _props;
     (0, _classCallCheck2["default"])(this, Template);
     /**
      * @param {string} prop
@@ -471,22 +512,23 @@ var Template = /*#__PURE__*/function () {
      */
     _classPrivateMethodInitSpec(this, _setAttr);
     (0, _defineProperty2["default"])(this, "__props", void 0);
-    _classPrivateFieldInitSpec(this, _tagName, {
-      writable: true,
-      value: void 0
-    });
-    _classPrivateFieldInitSpec(this, _attrs, {
-      writable: true,
-      value: ''
-    });
-    _classPrivateFieldInitSpec(this, _content, {
-      writable: true,
-      value: ''
-    });
-    (0, _classPrivateFieldSet2["default"])(this, _tagName, tagName);
-    this.__props = (props === null || props === void 0 ? void 0 : props.constructor) === Object ? props : {
+    (0, _defineProperty2["default"])(this, "__tagName", void 0);
+    (0, _defineProperty2["default"])(this, "__attrs", '');
+    (0, _defineProperty2["default"])(this, "__content", '');
+    this.__tagName = tagName;
+    this.__props = props = ((_props = props) === null || _props === void 0 ? void 0 : _props.constructor) === Object ? props : {
       children: props
     };
+    var _prop, _value;
+    for (_prop in props) {
+      _value = props[_prop];
+      if (_value === null || _value === false) {
+        continue;
+      }
+      if (this[_prop]) {
+        this[_prop](_value);
+      } else _classPrivateMethodGet(this, _setAttr, _setAttr2).call(this, _prop, _value);
+    }
   }
 
   /**
@@ -495,19 +537,8 @@ var Template = /*#__PURE__*/function () {
   (0, _createClass2["default"])(Template, [{
     key: "toString",
     value: function toString() {
-      var props = this.__props;
-      var tagName = (0, _classPrivateFieldGet2["default"])(this, _tagName);
-      var prop, value;
-      for (prop in props) {
-        value = props[prop];
-        if (value === null || value === false) {
-          continue;
-        }
-        if (this[prop]) {
-          this[prop](value);
-        } else _classPrivateMethodGet(this, _setAttr, _setAttr2).call(this, prop, value);
-      }
-      return voidElements[tagName] ? "<".concat(tagName + (0, _classPrivateFieldGet2["default"])(this, _attrs), ">") : "<".concat(tagName + (0, _classPrivateFieldGet2["default"])(this, _attrs), ">").concat((0, _classPrivateFieldGet2["default"])(this, _content), "</").concat(tagName, ">");
+      var tagName = this.__tagName;
+      return voidElements[tagName] ? "<".concat(tagName + this.__attrs, ">") : "<".concat(tagName + this.__attrs, ">").concat(this.__content, "</").concat(tagName, ">");
     }
 
     /**
@@ -530,7 +561,7 @@ var Template = /*#__PURE__*/function () {
     }
 
     /**
-     * @param {string|[]} className
+     * @param {string|string[]} className
      */
   }, {
     key: "className",
@@ -544,12 +575,12 @@ var Template = /*#__PURE__*/function () {
      */
   }, {
     key: "children",
-    value: function children(_children) {
-      (0, _classPrivateFieldSet2["default"])(this, _content, Template.children(_children));
+    value: function children(_children3) {
+      this.__content = _classStaticPrivateMethodGet(Template, Template, _children).call(Template, _children3);
     }
 
     /**
-     * @param {string|[]} innerHTML
+     * @param {string|string[]} innerHTML
      */
   }, {
     key: "innerHTML",
@@ -557,11 +588,11 @@ var Template = /*#__PURE__*/function () {
       if (!filter(_innerHTML)) {
         return;
       }
-      (0, _classPrivateFieldSet2["default"])(this, _content, Array.isArray(_innerHTML) ? _innerHTML.filter(filter).join('') : _innerHTML);
+      this.__content = Array.isArray(_innerHTML) ? _innerHTML.filter(filter).join('') : _innerHTML;
     }
 
     /**
-     * @param {string|[]} innerText
+     * @param {string|string[]} innerText
      */
   }, {
     key: "innerText",
@@ -574,60 +605,57 @@ var Template = /*#__PURE__*/function () {
       }
       _innerText = String(_innerText);
       _innerText = _innerText.replace(ESCAPE_TEXT_RE, _classStaticPrivateMethodGet(Template, Template, _escape));
-      (0, _classPrivateFieldSet2["default"])(this, _content, _innerText.replace(LINE_BREAK_RE, '<br>'));
+      this.__content = _innerText.replace(LINE_BREAK_RE, '<br>');
     }
-  }], [{
-    key: "children",
-    value:
-    /**
-     * @param {Template|string|*} children
-     * @return {string}
-     */
-    function children(_children2) {
-      if (!filter(_children2)) {
-        return '';
-      }
-      if (!Array.isArray(_children2)) {
-        if (_children2 instanceof Template) {
-          return _children2;
-        }
-        _children2 = String(_children2);
-        return _children2.replace(ESCAPE_TEXT_RE, _classStaticPrivateMethodGet(Template, Template, _escape));
-      }
-      var result = '';
-      var child;
-      var _iterator = _createForOfIteratorHelper(_children2),
-        _step;
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          child = _step.value;
-          result += Template.children(child);
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-      return result;
-    }
-
-    /**
-     * @param {string} char
-     * @return {string}
-     */
   }]);
   return Template;
 }();
+_class = Template;
 function _setAttr2(prop, value) {
   var name = attrNameMap[prop] || prop;
   if (value === true) {
-    (0, _classPrivateFieldSet2["default"])(this, _attrs, (0, _classPrivateFieldGet2["default"])(this, _attrs) + " ".concat(name));
+    this.__attrs += " ".concat(name);
     return;
   }
   value = String(value);
-  value = value.replace(ESCAPE_ATTR_RE, _classStaticPrivateMethodGet(Template, Template, _escape));
-  (0, _classPrivateFieldSet2["default"])(this, _attrs, (0, _classPrivateFieldGet2["default"])(this, _attrs) + " ".concat(name, "=\"").concat(value, "\""));
+  value = value.replace(ESCAPE_ATTR_RE, _classStaticPrivateMethodGet(_class, _class, _escape));
+  this.__attrs += " ".concat(name, "=\"").concat(value, "\"");
 }
+/**
+ * @param {Template|string|*} children
+ * @return {string}
+ */
+function _children(children) {
+  if (!filter(children)) {
+    return '';
+  }
+  if (!Array.isArray(children)) {
+    if (children instanceof _class) {
+      return children;
+    }
+    children = String(children);
+    return children.replace(ESCAPE_TEXT_RE, _classStaticPrivateMethodGet(_class, _class, _escape));
+  }
+  var result = '';
+  var child;
+  var _iterator = _createForOfIteratorHelper(children),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      child = _step.value;
+      result += _classStaticPrivateMethodGet(_class, _class, _children).call(_class, child);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  return result;
+}
+/**
+ * @param {string} char
+ * @return {string}
+ */
 function _escape(_char) {
   return entities[_char];
 }
@@ -705,14 +733,14 @@ module.exports = _toPropertyKey, module.exports.__esModule = true, module.export
 
 
 
-function _typeof(obj) {
+function _typeof(o) {
   "@babel/helpers - typeof";
 
-  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(obj);
+  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(o);
 }
 module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
@@ -764,27 +792,62 @@ module.exports = _defineProperty, module.exports.__esModule = true, module.expor
 
 
 
-var classApplyDescriptorGet = __webpack_require__(11);
-var classExtractFieldDescriptor = __webpack_require__(12);
-function _classPrivateFieldGet(receiver, privateMap) {
-  var descriptor = classExtractFieldDescriptor(receiver, privateMap, "get");
-  return classApplyDescriptorGet(receiver, descriptor);
-}
-module.exports = _classPrivateFieldGet, module.exports.__esModule = true, module.exports["default"] = module.exports;
+var _interopRequireDefault = __webpack_require__(3);
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(4));
+var _createClass2 = _interopRequireDefault(__webpack_require__(5));
+var _inherits2 = _interopRequireDefault(__webpack_require__(11));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(13));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(15));
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var Template = __webpack_require__(2);
+var Fragment = /*#__PURE__*/function (_Template) {
+  (0, _inherits2["default"])(Fragment, _Template);
+  var _super = _createSuper(Fragment);
+  function Fragment() {
+    (0, _classCallCheck2["default"])(this, Fragment);
+    return _super.apply(this, arguments);
+  }
+  (0, _createClass2["default"])(Fragment, [{
+    key: "toString",
+    value:
+    /**
+     * @return {string}
+     */
+    function toString() {
+      return this.__content;
+    }
+  }]);
+  return Fragment;
+}(Template);
+module.exports = function (props) {
+  return new Fragment(null, props);
+};
 
 /***/ }),
 /* 11 */
-/***/ ((module) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 
-function _classApplyDescriptorGet(receiver, descriptor) {
-  if (descriptor.get) {
-    return descriptor.get.call(receiver);
+var setPrototypeOf = __webpack_require__(12);
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
   }
-  return descriptor.value;
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  Object.defineProperty(subClass, "prototype", {
+    writable: false
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
 }
-module.exports = _classApplyDescriptorGet, module.exports.__esModule = true, module.exports["default"] = module.exports;
+module.exports = _inherits, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 /* 12 */
@@ -792,13 +855,14 @@ module.exports = _classApplyDescriptorGet, module.exports.__esModule = true, mod
 
 
 
-function _classExtractFieldDescriptor(receiver, privateMap, action) {
-  if (!privateMap.has(receiver)) {
-    throw new TypeError("attempted to " + action + " private field on non-instance");
-  }
-  return privateMap.get(receiver);
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  return _setPrototypeOf(o, p);
 }
-module.exports = _classExtractFieldDescriptor, module.exports.__esModule = true, module.exports["default"] = module.exports;
+module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 /* 13 */
@@ -806,14 +870,17 @@ module.exports = _classExtractFieldDescriptor, module.exports.__esModule = true,
 
 
 
-var classApplyDescriptorSet = __webpack_require__(14);
-var classExtractFieldDescriptor = __webpack_require__(12);
-function _classPrivateFieldSet(receiver, privateMap, value) {
-  var descriptor = classExtractFieldDescriptor(receiver, privateMap, "set");
-  classApplyDescriptorSet(receiver, descriptor, value);
-  return value;
+var _typeof = (__webpack_require__(7)["default"]);
+var assertThisInitialized = __webpack_require__(14);
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+  return assertThisInitialized(self);
 }
-module.exports = _classPrivateFieldSet, module.exports.__esModule = true, module.exports["default"] = module.exports;
+module.exports = _possibleConstructorReturn, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 /* 14 */
@@ -821,20 +888,30 @@ module.exports = _classPrivateFieldSet, module.exports.__esModule = true, module
 
 
 
-function _classApplyDescriptorSet(receiver, descriptor, value) {
-  if (descriptor.set) {
-    descriptor.set.call(receiver, value);
-  } else {
-    if (!descriptor.writable) {
-      throw new TypeError("attempted to set read only private field");
-    }
-    descriptor.value = value;
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
+  return self;
 }
-module.exports = _classApplyDescriptorSet, module.exports.__esModule = true, module.exports["default"] = module.exports;
+module.exports = _assertThisInitialized, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 /* 15 */
+/***/ ((module) => {
+
+
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  return _getPrototypeOf(o);
+}
+module.exports = _getPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+/* 16 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
@@ -842,10 +919,10 @@ module.exports = _classApplyDescriptorSet, module.exports.__esModule = true, mod
 var _interopRequireDefault = __webpack_require__(3);
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(4));
 var _createClass2 = _interopRequireDefault(__webpack_require__(5));
-var _get2 = _interopRequireDefault(__webpack_require__(16));
-var _inherits2 = _interopRequireDefault(__webpack_require__(19));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(21));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(18));
+var _get2 = _interopRequireDefault(__webpack_require__(17));
+var _inherits2 = _interopRequireDefault(__webpack_require__(11));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(13));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(15));
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var Template = __webpack_require__(2);
@@ -883,12 +960,12 @@ module.exports = function (props) {
 };
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 
-var superPropBase = __webpack_require__(17);
+var superPropBase = __webpack_require__(18);
 function _get() {
   if (typeof Reflect !== "undefined" && Reflect.get) {
     module.exports = _get = Reflect.get.bind(), module.exports.__esModule = true, module.exports["default"] = module.exports;
@@ -908,12 +985,12 @@ function _get() {
 module.exports = _get, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 
-var getPrototypeOf = __webpack_require__(18);
+var getPrototypeOf = __webpack_require__(15);
 function _superPropBase(object, property) {
   while (!Object.prototype.hasOwnProperty.call(object, property)) {
     object = getPrototypeOf(object);
@@ -924,93 +1001,7 @@ function _superPropBase(object, property) {
 module.exports = _superPropBase, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 18 */
-/***/ ((module) => {
-
-
-
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  return _getPrototypeOf(o);
-}
-module.exports = _getPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
 /* 19 */
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-
-var setPrototypeOf = __webpack_require__(20);
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  Object.defineProperty(subClass, "prototype", {
-    writable: false
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-module.exports = _inherits, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 20 */
-/***/ ((module) => {
-
-
-
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  return _setPrototypeOf(o, p);
-}
-module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 21 */
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-
-var _typeof = (__webpack_require__(7)["default"]);
-var assertThisInitialized = __webpack_require__(22);
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-  return assertThisInitialized(self);
-}
-module.exports = _possibleConstructorReturn, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 22 */
-/***/ ((module) => {
-
-
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-module.exports = _assertThisInitialized, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 23 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
@@ -1018,9 +1009,9 @@ module.exports = _assertThisInitialized, module.exports.__esModule = true, modul
 var _interopRequireDefault = __webpack_require__(3);
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(4));
 var _createClass2 = _interopRequireDefault(__webpack_require__(5));
-var _inherits2 = _interopRequireDefault(__webpack_require__(19));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(21));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(18));
+var _inherits2 = _interopRequireDefault(__webpack_require__(11));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(13));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(15));
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var Template = __webpack_require__(2);
@@ -1057,7 +1048,7 @@ module.exports = function (props) {
 };
 
 /***/ }),
-/* 24 */
+/* 20 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
@@ -1065,9 +1056,9 @@ module.exports = function (props) {
 var _interopRequireDefault = __webpack_require__(3);
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(4));
 var _createClass2 = _interopRequireDefault(__webpack_require__(5));
-var _inherits2 = _interopRequireDefault(__webpack_require__(19));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(21));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(18));
+var _inherits2 = _interopRequireDefault(__webpack_require__(11));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(13));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(15));
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var Template = __webpack_require__(2);
