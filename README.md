@@ -16,7 +16,7 @@ It is a convenient and fast tool for creating templates.
 - Convenient JS-compatible syntax
 - Secure, escaping strings by default
 - Cross-platform, works both in NodeJS and in the browser
-- Support for ES2015 named imports
+- Support for ESM named imports
 - Small footprint, 4KB after gzip
 - Compatible with Express
 
@@ -79,17 +79,10 @@ const result = example({
   lang : 'en',
   title : 'Hello JSTE!',
 })
-
-// browser
-document.body.innerHTML = result.toString()
-
-// nodejs
-app.get('/form', (req, res) => {
-  res.send(result.toString())
-})
+const html = result.toString()
 ```
 
-In this example, `result.toString()` returns an HTML string with the appropriate markup (line breaks added for readability):
+In this example, the constant `html` is an HTML string with the appropriate markup (line breaks added for readability):
 
 ```html
 <!doctype html>
